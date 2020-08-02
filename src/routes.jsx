@@ -5,8 +5,8 @@ import LoginPage from './pages/LoginPage/LoginPage'
 import RegisterPage from './pages/RegisterPage/RegisterPage'
 import AboutPage from './pages/AboutPage/AboutPage'
 import ContactsPage from './pages/ContactsPage/ContactsPage'
-
-
+import PartnersPage from './pages/Partners/PartnersPage'
+import ErrorPage from './pages/404/404'
 
 
 
@@ -21,6 +21,8 @@ class Routes extends Component {
         <Route path='/register' component={RegisterPage} />
         <Route path='/about' component={AboutPage} />
         <Route path='/contacts' component={ContactsPage} />
+        <Route path='/partners' component={PartnersPage} />
+        <Route  component={ErrorPage} />
 
         </Switch>
         </Router>

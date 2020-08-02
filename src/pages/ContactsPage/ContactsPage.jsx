@@ -38,7 +38,7 @@ export default class ContactsPage extends Component {
                             <br/>
                             <b>Email:</b> tovaeemail@gmail.com
                             <br/>
-                            <b>Adress: </b> ul. Neshto si tam, kv. Kvartal, 9000, Varna, Bulgaria
+                            <b>Address: </b> ul. Neshto si tam, kv. Kvartal, 9000, Varna, Bulgaria
 
                         </p>
 

@@ -1,0 +1,33 @@
+.Main404{
+    position: absolute;
+    left: 50%;
+    top:33%;
+    transform: translate(-50%,-19%);
+    width: 80%;
+    height:550px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.5);
+    padding:40px;
+    padding-top:20px;
+
+
+}
+.Main404 h1{
+    font-size: 150px;
+}
+.go-back{
+    border:none;
+    height:40px;
+    width: 100px;
+    outline:none;
+    color: #ffffff;
+    font-size: 15px;
+    background-color: tomato;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.go-back:hover{
+    background-color: thistle;
+    color: white;
+}
