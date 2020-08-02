@@ -2,6 +2,7 @@ import React from 'react'
 import './LoginPage.css'
 import Main from '../../Components/Main/Main'
 import Input from '../../Components/Input'
+import {Helmet} from 'react-helmet'
 
 
 class LoginPage extends React.Component {
@@ -24,6 +25,9 @@ class LoginPage extends React.Component {
   
         return (
             <Main>
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
                <div className="Container">
                    <h3>Login</h3>
                 <form className="Form-area">

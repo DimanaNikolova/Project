@@ -1,0 +1,13 @@
+.Map{
+    position: absolute;
+    top:75%;
+    left:30%;
+    transform: translate(-50%,-50%);
+    width: 50%;
+    height:50%;
+    box-sizing: border-box;
+    /* background: #b87333; */
+    background: rgba(0,0,0,0.5); 
+    padding:20px;
+    /* padding-top:20px */
+}

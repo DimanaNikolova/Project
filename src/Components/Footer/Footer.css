@@ -1,17 +1,4 @@
-/* footer {
-    height: 100px;
-    margin-top: -50px;
-    background-color: black;
-    font-size: 14px;
-  }
-footer li {
-    font-size: 14px;
-    margin: 30px
-}
-.copyrights{
-  display: block;
-  margin-right: 60%
-} */
+
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
 body{
   font-family: 'Source Sans Pro', sans-serif;
