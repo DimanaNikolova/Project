@@ -4,32 +4,6 @@ import Main from '../../Components/Main/Main'
 import Input from '../../Components/Input'
 import { Helmet } from 'react-helmet'
 
-
-const authenticate = async (url, body, onSuccess, onFailure) => {
-    try {
-      const promise = await fetch(url, {
-        method: 'POST',
-        mode:'no-cors',
-        body: JSON.stringify(body),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      const response = await promise.json()
-  
-      if (response.username) {
-        onSuccess({
-          username: response.username,
-          id: response._id
-        })
-      } else {
-        onFailure()
-      }
-    } catch(e) {
-      onFailure(e)
-    }
-  }
-
 class RegisterPage extends React.Component {
     constructor(props) {
         super(props)
@@ -45,6 +19,7 @@ class RegisterPage extends React.Component {
         newState[type] = e.target.value
         this.setState(newState)
     }
+
     handleSubmit = async (event) => {
         event.preventDefault()
         const { username, password } = this.state
@@ -71,6 +46,7 @@ class RegisterPage extends React.Component {
         }
 
     }
+    
     render() {
         const { username, password, rePassword } = this.state
 
