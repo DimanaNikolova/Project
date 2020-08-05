@@ -45,7 +45,8 @@ class LoginPage extends React.Component {
                     username: response.username,
                     userId: response._id
                 }
-                this.context.logIn(user)
+                this.context.user =user
+                this.context.loggedIn = true
                 this.props.history.push('/partners')
             }
 
