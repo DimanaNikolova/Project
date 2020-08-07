@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Main from '../../Components/Main/Main'
 import {Helmet} from 'react-helmet'
 import './ArticlesPage.css'
+import { Link } from 'react-router-dom'
 
 
 export class ArticlesPage extends React.Component {
@@ -40,7 +41,9 @@ export class ArticlesPage extends React.Component {
                     <p key={article._id} className="content">
                        {index+1}: {article.content.slice(0,500) + '...'}
                     </p>
+                    <Link to={`/article/${article._id}`}>
                         <button className='btn'>Read more</button>
+                    </Link>
                     </div>
                     <div>
                     <span>

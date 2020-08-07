@@ -9,6 +9,8 @@ import PartnersPage from './pages/Partners/PartnersPage'
 import ErrorPage from './pages/404/404'
 import CreateArticlePage from './pages/CreateArticlePage/CreateArticlePage'
 import ArticlesPage from './pages/ArticlesPage/ArticlesPage'
+import ArticleDetailsPage from './pages/ArticleDetailsPage/ArticleDetailsPage'
+
 
 
 
@@ -25,6 +27,8 @@ class Routes extends Component {
         <Route path='/partners' component={PartnersPage} />
         <Route path='/create-article' component={CreateArticlePage} />
         <Route path='/all' component={ArticlesPage} />
+        <Route path='/article/:id' component={ArticleDetailsPage} />
+
         <Route  component={ErrorPage} />
 
         </Switch>
