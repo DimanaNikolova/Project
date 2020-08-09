@@ -26,7 +26,6 @@ export default class CreateArticlePage extends Component {
         event.preventDefault()
         const { title, content, image,category } = this.state
         const user = this.context.user
-        console.log(this.context)
 
         try {
 
