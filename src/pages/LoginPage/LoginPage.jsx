@@ -4,7 +4,7 @@ import Main from '../../Components/Main/Main'
 import Input from '../../Components/Input'
 import {Helmet} from 'react-helmet'
 import UserContext from '../../utils/UserContext'
-
+import FacebookLogin from '../../Components/FacebookLogin/FacebookLogin'
 
 class LoginPage extends React.Component {
     constructor(props) {
@@ -47,7 +47,7 @@ class LoginPage extends React.Component {
                 }
                 this.context.user =user
                 this.context.loggedIn = true
-                this.props.history.push('/partners')
+                this.props.history.push('/all')
             }
 
         } catch (e) {
@@ -78,6 +78,9 @@ class LoginPage extends React.Component {
                             id="password"/>
                             <button type="submit">Login</button>
                 </form>
+                <br/>
+                
+                            <FacebookLogin/>
                </div>
             </Main>
         )

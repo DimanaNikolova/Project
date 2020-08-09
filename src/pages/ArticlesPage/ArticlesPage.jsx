@@ -3,7 +3,7 @@ import Main from '../../Components/Main/Main'
 import { Helmet } from 'react-helmet'
 import './ArticlesPage.css'
 import { Link } from 'react-router-dom'
-
+import Sorting from '../../Components/Sorting/Sorting'
 
 export class ArticlesPage extends React.Component {
     constructor(props) {
@@ -11,7 +11,8 @@ export class ArticlesPage extends React.Component {
 
         this.state = {
             articles: [],
-            criteria: ''
+            criteria: '',
+            categoryCriteria:''
         }
     }
 
@@ -30,11 +31,16 @@ export class ArticlesPage extends React.Component {
 
 
     renderOrigamis() {
-        const { articles, criteria } = this.state
-        const sorted = [...articles].sort((a, b) => b[criteria] - a[criteria]);
+        let { articles, criteria, categoryCriteria } = this.state
+        if (criteria){
+            articles = [...articles].sort((a, b) => b[criteria] - a[criteria]);
+        }
+        if (categoryCriteria && categoryCriteria !== 'all'){
+            articles = [...articles].filter((a) => a.category===categoryCriteria);
+        }
 
 
-        return sorted.map((article, index) => {
+        return articles.map((article, index) => {
             return (
                 <div className="Article" key={index}>
                     <div className='product-details'>
@@ -42,7 +48,7 @@ export class ArticlesPage extends React.Component {
                         <br />
                         <small className="articleAuthor">Category: {article.category} Likes: {article.likes ? article.likes : 0}</small>
                         <p key={article._id} className="content">
-                            {index + 1}: {article.content.slice(0, 500) + '...'}
+                            {index + 1}: {article.content.slice(0, 300) + '...'}
                         </p>
                         <Link to={`/article/${article._id}`}>
                             <button className='btn'>Read more</button>
@@ -64,22 +70,15 @@ export class ArticlesPage extends React.Component {
 
     }
 
-
-
     render() {
         return <Main>
             <Helmet><title>Articles</title></Helmet>
             <div className="Articles">
                 <h1 >Articles</h1>
-                <div className='Sorting'>
-                    <label htmlFor="sortingValue">Sort by: </label>
-
-                    <select onChange={(e) => this.handleChange(e, 'criteria')} name="sorting" id="Sort">
-                        <option value="category">Category</option>
-                        <option value="creationDate">Newest</option>
-                        <option value="likes">Likes</option>
-                    </select>
-                </div>
+               <Sorting
+               onChange={(e)=>this.handleChange(e, 'criteria')}
+               onCategoryChange={(e)=>this.handleChange(e, 'categoryCriteria')}
+               />
                 {
                     this.renderOrigamis()
                 }

@@ -1,26 +1,26 @@
-import React, { useContext } from 'react'
+import React, { Component } from 'react'
 import './Header.css'
-import { Link } from 'react-router-dom'
 import UserContext from '../../utils/UserContext'
+import MenuGroup from '../MenuGroup'
 
-const Header = () => {
-    const context = useContext(UserContext)
-    return <nav className="menu">
-        {context.user ?
+export default class Header extends Component {
+    static contextType = UserContext
+    render() {
+        const { loggedIn, user } = this.context
+        return <nav className="menu">
+        {user ?
             <ul className="menu__list">
-                <li className="menu__group"><Link to="/" className="menu__link">Home</Link></li>
-                <li className="menu__group"><Link to="/create-article" className="menu__link">Create</Link></li>
-                <li className="menu__group"><Link to="/all" className="menu__link">All</Link></li>
-
-
+                <MenuGroup path='/' name='Home' />
+                <MenuGroup path='/create-article' name='Create' />
+                <MenuGroup path='/all' name='All' />
+                <MenuGroup path='/' name='Logout' onClick={this.context.logOut}/>
             </ul>
-            : <ul className="menu__list">
-                <li className="menu__group"><Link to="/" className="menu__link">Home</Link></li>
-                <li className="menu__group"><Link to="/register" className="menu__link">Register</Link></li>
-                <li className="menu__group"><Link to="/login" className="menu__link">Login</Link></li>
+            :
+            <ul className="menu__list">
+                <MenuGroup path='/' name='Home' />
+                <MenuGroup path='/register' name='Register' />
+                <MenuGroup path='/login' name='Login' />
             </ul>}
-
     </nav>
+    }
 }
-
-export default Header

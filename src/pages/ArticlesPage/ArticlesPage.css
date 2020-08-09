@@ -1,9 +1,8 @@
 .Articles{
-	position: absolute;
+	position: relative;
 	margin-bottom: 5%;
-	left: 50%;
-	margin-top: 28%;
-    transform: translate(-50%,-19%);
+	margin-top: 10%;
+	left: 10%;
 	width: 80%;
 	height: auto;
     box-sizing: border-box;
@@ -29,14 +28,14 @@
 
 body{
     background-color: #ffebd1;
-    background-image: url(https://is2.4chan.org/wg/1592021252847.jpg);
+	background-image: url(https://is2.4chan.org/wg/1592021252847.jpg);
+	height: 0px;
     background-position: center;
   background-repeat: repeat-y;
   background-size: cover;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
 }
 
-/* 	Product details  */
 .product-details {
 	position: relative;
 	text-align: left;
@@ -48,7 +47,6 @@ body{
     
 }
 
-/* 	Product Name */
 .Article h1{
 	font-family: 'Old Standard TT', serif;
 	display: inline-block;
@@ -59,8 +57,6 @@ body{
 	
 }
 
-
-/* The most important information about the product */
 .Article .product-details > p {
 	font-family: 'Farsan', cursive;
 	text-align: center;
@@ -69,15 +65,7 @@ body{
 	
 }
 
-/* control */
 
-.control{
-	position: absolute;
-	bottom: 20%;
-	left: 22.8%;
-	
-}
-/* the Button */
 .Article button {
 	transform: translateY(0px);
 	transition: 0.3s linear;
@@ -105,33 +93,8 @@ body{
 	margin:0;
 	
 }
-/* shopping cart icon */
-.Article button .price, .shopping-cart{
-	background: #333;
-	border: 0;
-	margin: 0;
-}
 
-.Article button .price {
-	transform: translateX(-10%); padding-right: 15px;
-}
 
-/* the Icon */
-.Article button .shopping-cart {
-	transform: translateX(-100%);
-  position: absolute;
-	background: #333;
-	z-index: 1;
-  left: 0;
-  top: 0;
-}
-
-/* buy */
-.Article button .buy {z-index: 3; font-weight: bolder;}
-
-.Article button:hover .price {transform: translateX(-110%);}
-
-.Article button:hover .shopping-cart {transform: translateX(0%);}
 
 
 
@@ -152,19 +115,19 @@ body{
 	background: rgba(199, 85, 85, 0.1);
 	text-align: center;
 	margin: 1em auto;
-	width: 30%;
+	width: 60%;
     height: 10%;
     padding-top: 2%;
 	
 } 
 #Sort {
-    width: 50%;
+    width: 30%;
     border:none;
     border-bottom: 1px solid #ffffff;
     background-color: transparent;
     outline: none;
     height: 40px;
-    color: white;
+    color: lightgray;
     display:16px;
     font-size: 80%;
     text-align: center;

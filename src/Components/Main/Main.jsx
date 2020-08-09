@@ -9,9 +9,7 @@ const Main = (props) => {
         return (
                 <div className="App">
                     <Header />
-                        <div className="Main">
-                            {props.children}
-                        </div>                  
+                            {props.children}     
                     <Footer />
                 </div>
             
