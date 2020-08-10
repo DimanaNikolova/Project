@@ -1,0 +1,13 @@
+.ErrorMessage {
+    margin-bottom: 20px;
+    width: 100%;
+    border:none;
+    background-color: rgba(185, 0, 0, 0.4);;
+    outline: none;
+    height: 40px;
+    color: #ffffff;
+    display:16px;
+}
+.ErrorMessage p {
+    text-align: center;
+}

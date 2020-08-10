@@ -9,37 +9,36 @@ body{
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
 }
 .Add-article{
-    position: absolute;
-    left: 50%;
-    top:40%;
-    transform: translate(-50%,-19%);
-    width: 80%;
-    height:1000px;
+    position: relative;
+	margin-bottom: 5%;
+	margin-top: 10%;
+	left: 10%;
+	width: 80%;
+	height: auto;
     box-sizing: border-box;
     background: rgba(0,0,0,0.5);
     padding:40px;
-    padding-top:20px
+	padding-top:20px
 
 }
 .Article-Form-area {
-    position: absolute;
-    top:59%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    width: 75%;
-    height:85%;
-    box-sizing: border-box;
+    width: 80%;
+    height:auto;
     background: rgba(0,0,0,0.5);
-    /* background: #b87333; */
     border: solid 5px #CFB095;
+    text-align: center;
+	overflow: hidden;
+    margin: 1em auto;
+    
+	border-radius: 5px;
 
-    padding:40px;
-    padding-top:20px
 }
 
 .Article-Form-area textarea {
-    width: 100%;
-    height: 50%;
+    width: 90%;
+    min-height: 500px;
+    margin-top: 5%;
+
 }
 #categories {
     margin-bottom: 20px;
@@ -49,7 +48,7 @@ body{
     background-color: transparent;
     outline: none;
     height: 40px;
-    color: black;
+    color: lightgray;
     display:16px
 }
 #categories:hover{

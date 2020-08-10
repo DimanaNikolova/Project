@@ -10,8 +10,8 @@ const articleSchema = new mongoose.Schema({
     },
     content:{
         type: mongoose.SchemaTypes.String,
-        required:[true, 'Description is required!'],
-        minlength:[20, "Description should be at least 20 characters long!"]
+        required:[true, 'Content is required!'],
+        minlength:[20, "Content should be at least 20 characters long!"]
     },
     image:{
         type: mongoose.SchemaTypes.String,

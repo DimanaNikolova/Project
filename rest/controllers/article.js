@@ -99,10 +99,10 @@ module.exports = {
                 //     res.redirect('/')
                 // })
                 .catch((err) => {
-                    console.log(err);
                     if (err.code === 11000 || err.name === "ValidationError") {
                         const message = Object.entries(err.errors).map(tuple => {
-                            return tuple[1].message
+                            return res.send({message: tuple[1].message})
+                            //return tuple[1].message
                         })
                       //  res.render('create.hbs', { message, oldInput: {title, description} })
                     }

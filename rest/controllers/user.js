@@ -54,12 +54,12 @@ module.exports = {
                         res.header('Authorization', token).send(user);
                     }).catch((err) => {
 
-                        res.render('login.hbs', {
+                        res.send( {
                             message: "Username or password is invalid!"
                         });
                     })
             }).catch((err) => {
-                res.render('login.hbs', {
+                res.send({
                     message: "Username or password is invalid!",
                     oldInput: { username, password }
                 });
@@ -125,7 +125,9 @@ module.exports = {
                         const message = Object.entries(err.errors).map(tuple => {
                             return tuple[1].message
                         })
-                        res.render('register.hbs', { message, oldInput: { username, password, rePassword } })
+                        res.send( {
+                            message: "Username or password is invalid!"
+                        });
                     }
 
                 })

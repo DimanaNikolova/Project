@@ -3,6 +3,7 @@ import Main from '../../Components/Main/Main'
 import Input from '../../Components/Input'
 import './CreateArticlePage.css'
 import UserContext from '../../utils/UserContext'
+import ErrorMessage from '../../Components/ErrorMessage/Error'
 
 export default class CreateArticlePage extends Component {
     constructor(props) {
@@ -11,7 +12,8 @@ export default class CreateArticlePage extends Component {
             title: '',
             content: '',
             image: '',
-            category: ''
+            category: '',
+            message: ''
         }
     }
     static contextType = UserContext
@@ -24,7 +26,7 @@ export default class CreateArticlePage extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault()
-        const { title, content, image,category } = this.state
+        const { title, content, image, category } = this.state
         const user = this.context.user
 
         try {
@@ -43,23 +45,27 @@ export default class CreateArticlePage extends Component {
                 }
             })
             const response = await promise.json()
-            console.log(response)
-           
+
+            if (response.message) {
+                return this.setState({ message: response.message })
+            }
 
             this.props.history.push('/partners')
-         
+
         } catch (e) {
             console.log(e);
         }
 
     }
     render() {
-        const { title, content, image,category } = this.state
+        const { title, content, image, category, message } = this.state
         return (
             <Main>
                 <div className="Add-article">
                     <h3>Add an article</h3>
+
                     <form className="Article-Form-area" onSubmit={this.handleSubmit}>
+                        {message ? <ErrorMessage message={message} /> : null}
                         <Input value={title}
                             onChange={(e) => this.handleChange(e, 'title')}
                             label="Title"
@@ -67,7 +73,7 @@ export default class CreateArticlePage extends Component {
                             id="title" />
                         <label >Category:</label>
 
-                        <select name="categories" id="categories"  onChange={(e) => this.handleChange(e, 'category')}>
+                        <select name="categories" id="categories" onChange={(e) => this.handleChange(e, 'category')}>
                             <option disabled value="volvo">Select a category</option>
                             <option value="news">News</option>
                             <option value="tips">Tips</option>
@@ -80,10 +86,10 @@ export default class CreateArticlePage extends Component {
                             label="Image"
                             placeholder='Please put a valid link'
                             id="image" />
+                        <label >Content:</label>
 
-                       
                         <textarea placeholder="Write the article here..." name="content" value={content} onChange={(e) => this.handleChange(e, 'content')}></textarea>
-                                <br/>
+                        <br />
                         <button type="submit">Submit</button>
                     </form>
                 </div>
