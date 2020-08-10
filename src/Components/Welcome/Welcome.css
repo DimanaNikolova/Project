@@ -53,7 +53,7 @@ h3 {
 }
 
 
-.btnWelcome {
+.btn {
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-top: 1rem;  
@@ -93,5 +93,3 @@ color: #fff;
 background-color: #333;
  border-color: #666;
 }
-
-

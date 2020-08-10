@@ -46,7 +46,7 @@ export class ArticlesPage extends React.Component {
                     <div className='product-details'>
                         <h1>{article.title}</h1>
                         <br />
-                        <small className="articleAuthor">Category: {article.category} Likes: {article.likes ? article.likes : 0}</small>
+                        <small className="articleAuthor">Category: {article.category} Likes: {article.likedBy.length }</small>
                         <p key={article._id} className="content">
                             {index + 1}: {article.content.slice(0, 300) + '...'}
                         </p>

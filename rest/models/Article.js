@@ -27,9 +27,9 @@ const articleSchema = new mongoose.Schema({
     creationDate:{
         type: mongoose.SchemaTypes.Date, default:Date.now
     },
-    creationDate:{
-        type: mongoose.SchemaTypes.Number,
-        default: 0
-    }
+    likedBy: [{
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'User'
+    }]
 })
 module.exports = new Model('Article', articleSchema)

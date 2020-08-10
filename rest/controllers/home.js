@@ -10,10 +10,10 @@ module.exports = {
                 .limit(3)
                 .lean()
                 .then(articles => {
-                    articles.forEach(a => {
-                        a.description=a.description.split(' ').slice(0, 50).join(' ')
+                    // articles.forEach(a => {
+                    //     a.description=a.description.split(' ').slice(0, 50).join(' ')
        
-                    });
+                    // });
                     res.render('index.hbs',{articles})
                 })
         }

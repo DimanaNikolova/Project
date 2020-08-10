@@ -5,8 +5,6 @@ textarea{
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald:300,400,700');
 
 body{
-    /* background-color: #ffebd1; */
-    /* background-image: url(https://is2.4chan.org/wg/1592021252847.jpg); */
     background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -28,7 +26,9 @@ h3{
     background: rgba(0,0,0,0.5);
     /* background: #b87333; */
     padding:40px;
-    padding-top:20px
+    padding-top:20px;
+    margin-top: 5%;
+    margin-bottom: 5%
 
 }
 

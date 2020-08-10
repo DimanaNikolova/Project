@@ -6,7 +6,7 @@ const Model = mongoose.model
 const userSchema = new mongoose.Schema({
     username: {
         unique: [true, "This username is already taken!"],
-        required:[true, 'Username is required!'],
+        required: [true, 'Username is required!'],
         type: String
     },
     password: {
@@ -17,7 +17,11 @@ const userSchema = new mongoose.Schema({
         [{
             type: mongoose.SchemaTypes.ObjectId,
             ref: 'Article'
-        }]
+        }],
+    likedArticles: [{
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Article'
+    }]
 
 });
 
