@@ -9,7 +9,7 @@ body{
 section{
   text-align:center;
 }
-.footer #button{
+.footer #footerButton{
 	width:35px;
 	height:35px;
 	border: #636063 12px solid;
@@ -22,7 +22,7 @@ section{
     -ms-transition: all 1s ease;
     transition: all 1s ease;
 }
-.footer #button:hover{
+.footer #footerButton:hover{
 	width:35px;
 	height:35px;
 	border: #3A3A3A 12px solid;
