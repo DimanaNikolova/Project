@@ -85,7 +85,8 @@ module.exports = {
                         });
                 })
                 .catch(err => {
-                    if (!redirectAuthenticated) { next(); return; }
+                  //  if (!redirectAuthenticated) { next(); return; }
+                  console.log(err);
   
                     if (['token expired', 'blacklisted token', 'jwt must be provided'].includes(err.message)) {
                         res.status(401).send('UNAUTHORIZED!');

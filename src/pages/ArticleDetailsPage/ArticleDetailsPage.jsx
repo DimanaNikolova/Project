@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Main from '../../Components/Main/Main'
 import { Helmet } from 'react-helmet'
 import './ArticleDetailsPage.css'
+import LikeBtn from '../../Components/LikeBtn/LikeBtn'
 
 export default class ArticleDetailsPage extends Component {
     constructor(props) {
@@ -9,7 +10,8 @@ export default class ArticleDetailsPage extends Component {
 
         this.state = {
             currentArticle: [],
-            author: []
+            author: [],
+            likes: 0
         }
 
     }
@@ -25,24 +27,23 @@ export default class ArticleDetailsPage extends Component {
                     this.props.history.push('/error')
                 }
                 return res.json()
-            }).then(({article,user}) => {
-                console.log(article);
-                console.log(user);
-                this.setState({ currentArticle: article, author: user })
+            }).then(({ article, user }) => {
+                this.setState({ currentArticle: article, author: user, likes: article.likedBy.length })
             })
+
     }
 
     render() {
-        const { currentArticle, author } = this.state
-
+        const { currentArticle, author, likes } = this.state
         return (
             <Main>
                 <Helmet><title>Edin article</title></Helmet>
                 <div className='CurrentArticle'>
-                <h1>{currentArticle.title}</h1>
-                <img src={currentArticle.image} />
-                <p><b>Category: </b>{currentArticle.category} <b>Author: </b>{author.username}</p>
-                <p className='DetailsContent'>{currentArticle.content}</p>
+                    {<LikeBtn />}
+                    <h1>{currentArticle.title} </h1>
+                    <img src={currentArticle.image} alt='article' />
+                    <p><b>Category: </b>{currentArticle.category} <b>Author: </b>{author.username} <b>Likes: {likes}</b></p>
+                    <p className='DetailsContent'>{currentArticle.content}</p>
                 </div>
             </Main>
         )
