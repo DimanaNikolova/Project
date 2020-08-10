@@ -5,13 +5,15 @@ import Input from '../../Components/Input'
 import {Helmet} from 'react-helmet'
 import UserContext from '../../utils/UserContext'
 import FacebookLogin from '../../Components/FacebookLogin/FacebookLogin'
+import ErrorMessage from '../../Components/ErrorMessage/Error'
 
 class LoginPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            message:''
         }
     }
     static contextType = UserContext
@@ -23,7 +25,7 @@ class LoginPage extends React.Component {
     }
     onSubmit = async (event) => {
         event.preventDefault()
-        const { username, password } = this.state
+        const { username, password,message } = this.state
 
         try {
             const promise = await fetch(`http://localhost:9999/user/login`, {
@@ -49,6 +51,9 @@ class LoginPage extends React.Component {
                 this.context.loggedIn = true
                 this.props.history.push('/all')
             }
+           else if (response.message){
+            this.setState({ message: response.message }) 
+        }
 
         } catch (e) {
             console.log(e);
@@ -57,7 +62,7 @@ class LoginPage extends React.Component {
     }
     
     render(){
-    const { username, password } = this.state
+    const { username, password,message } = this.state
   
         return (
             <Main>
@@ -65,6 +70,7 @@ class LoginPage extends React.Component {
                 <title>Login</title>
             </Helmet>
                <div className="Container">
+                   {message ? <ErrorMessage message={message}/> : null}
                    <h3>Login</h3>
                 <form className="Form-area" onSubmit={this.onSubmit}>
                     <Input value={username}

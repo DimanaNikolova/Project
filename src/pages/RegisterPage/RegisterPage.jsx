@@ -3,6 +3,7 @@ import '../LoginPage/LoginPage.css'
 import Main from '../../Components/Main/Main'
 import Input from '../../Components/Input'
 import { Helmet } from 'react-helmet'
+import ErrorMessage from '../../Components/ErrorMessage/Error'
 
 class RegisterPage extends React.Component {
     constructor(props) {
@@ -10,7 +11,8 @@ class RegisterPage extends React.Component {
         this.state = {
             username: "",
             password: "",
-            rePassword: ''
+            rePassword: '',
+            message: ''
         }
     }
 
@@ -37,8 +39,10 @@ class RegisterPage extends React.Component {
                 }
             })
             const response = await promise.json()
-           
-
+            if (response.message){
+               return this.setState({ message: response.message }) 
+            }
+            
             this.props.history.push('/login')
          
         } catch (e) {
@@ -48,7 +52,8 @@ class RegisterPage extends React.Component {
     }
     
     render() {
-        const { username, password, rePassword } = this.state
+        const { username, password, rePassword, message } = this.state
+  
 
         return (
             <Main>
@@ -56,6 +61,8 @@ class RegisterPage extends React.Component {
                     <title>Register</title>
                 </Helmet>
                 <div className="Container">
+                {message ? <ErrorMessage message={message}/> : null}
+
                     <h3>Register</h3>
                     <form className="Form-area" onSubmit={this.handleSubmit}>
                         <Input value={username}
