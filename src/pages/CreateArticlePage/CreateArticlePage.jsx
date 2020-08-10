@@ -58,7 +58,7 @@ export default class CreateArticlePage extends Component {
 
     }
     render() {
-        const { title, content, image, category, message } = this.state
+        const { title, content, image, message } = this.state
         return (
             <Main>
                 <div className="Add-article">

@@ -20,7 +20,6 @@
     display: block;
   }
   
-  /* skin */
   
   .menu{
     background-color: #CFB095;
@@ -40,13 +39,10 @@
     text-transform: uppercase;
   }
   
-  /* states */
   .menu__link:focus{
     outline: 2px solid #fff;
   }
-  
-  /* hover animation */
-  
+
   .menu__link{
     position: relative;
     overflow: hidden;
@@ -85,12 +81,7 @@
     transition-duration: .2s;
   }
   
-  /*
-  =====
-  DEMO
-  =====
-  */
-  
+
   @media (min-width: 768px){
   
     html{
@@ -125,12 +116,7 @@
     margin: auto;
   }
   
-  /*
-  =====
-  LinkedIn
-  =====
-  */
-  
+
   .linkedin{
     width: 100%;
     background-color: #f0f0f0;

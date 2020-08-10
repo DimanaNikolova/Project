@@ -56,7 +56,7 @@ section{
     transition: all 1s ease;
 	height: 10em;
 }
-.footer #container{
+.footer #footerCont{
 	margin-top:5px;
 	width:100%;
 height:100%;

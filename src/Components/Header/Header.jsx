@@ -6,7 +6,7 @@ import MenuGroup from '../MenuGroup'
 export default class Header extends Component {
     static contextType = UserContext
     render() {
-        const { loggedIn, user } = this.context
+        const { user } = this.context
         return <nav className="menu">
         {user ?
             <ul className="menu__list">

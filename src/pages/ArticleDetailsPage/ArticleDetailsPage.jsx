@@ -26,8 +26,6 @@ export default class ArticleDetailsPage extends Component {
                 }
                 return res.json()
             }).then(({article,user}) => {
-                console.log(article);
-                console.log(user);
                 this.setState({ currentArticle: article, author: user })
             })
     }
@@ -40,7 +38,7 @@ export default class ArticleDetailsPage extends Component {
                 <Helmet><title>Edin article</title></Helmet>
                 <div className='CurrentArticle'>
                 <h1>{currentArticle.title}</h1>
-                <img src={currentArticle.image} />
+                <img src={currentArticle.image} alt='article'/>
                 <p><b>Category: </b>{currentArticle.category} <b>Author: </b>{author.username}</p>
                 <p className='DetailsContent'>{currentArticle.content}</p>
                 </div>

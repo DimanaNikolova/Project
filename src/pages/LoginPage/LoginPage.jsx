@@ -25,7 +25,7 @@ class LoginPage extends React.Component {
     }
     onSubmit = async (event) => {
         event.preventDefault()
-        const { username, password,message } = this.state
+        const { username, password } = this.state
 
         try {
             const promise = await fetch(`http://localhost:9999/user/login`, {

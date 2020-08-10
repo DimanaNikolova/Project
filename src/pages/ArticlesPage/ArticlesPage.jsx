@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Main from '../../Components/Main/Main'
 import { Helmet } from 'react-helmet'
 import './ArticlesPage.css'

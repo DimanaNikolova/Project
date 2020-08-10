@@ -8,8 +8,8 @@ const Welcome = () => {
       <h3>Uppercase Heading</h3>
       <h1>Main Title Here</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ornare erat eu semper tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum blandit viverra leo in tempor.</p>
-      <Link to="/login" className="btn btn-primary btn-login">Login</Link>
-      <Link to="/register" className="btn btn-primary">Register</Link>
+      <Link to="/login" className="btnWelcome btn-primary btn-login">Login</Link>
+      <Link to="/register" className="btnWelcome btn-primary">Register</Link>
     </div>
   </div>
 }
