@@ -12,7 +12,7 @@ export default class Header extends Component {
             <ul className="menu__list">
                 <MenuGroup path='/' name='Home' />
                 <MenuGroup path='/create-article' name='Create' />
-                <MenuGroup path='/all' name='All' />
+                <MenuGroup path={`/profile/${this.context.user.userId}`} name='Profile' />
                 <MenuGroup path='/' name='Logout' onClick={this.context.logOut}/>
             </ul>
             :
