@@ -28,6 +28,20 @@ module.exports = {
             }
 
         },
+        profile: (req, res, next) => {
+            const id = req.params.id
+            
+
+            Article.find({likedBy: id}).then(likedBy=>{
+              
+                Article.find({articleAuthor: id}).then(createdBy=>{
+                    console.log(createdBy);
+                    res.send({likedBy, createdBy})
+                })
+            })
+            
+
+        },
         logout: (req, res, next) => {
             res
                 .clearCookie(config.cookie)

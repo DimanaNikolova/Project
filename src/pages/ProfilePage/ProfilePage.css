@@ -1,0 +1,37 @@
+.ProfileContainer{
+    position: relative;
+	margin-bottom: 5%;
+	margin-top: 10%;
+	left: 10%;
+	width: 80%;
+	height: auto;
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.5);
+    padding:40px;
+	padding-top:20px
+}
+.ProfilePic {
+    border-radius: 50%;
+    width: 25%;
+    margin-top: 5%;
+    border: 5px solid white;}
+.row {
+   display: flex;
+ }
+.column {
+    flex: 50%;
+    margin: 0% 5%;
+    overflow-y: scroll;
+    height: 300px;
+}
+.head{
+    flex: 50%;
+}
+.ProfileLink {
+    color: white;
+    text-decoration: none;
+}
+.ProfileLinkDiv {
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 5px;
+}
