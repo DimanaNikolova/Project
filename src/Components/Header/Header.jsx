@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Header.css'
 import UserContext from '../../utils/UserContext'
 import MenuGroup from '../MenuGroup'
+import Search from '../../Components/Search/Search'
 
 export default class Header extends Component {
     static contextType = UserContext

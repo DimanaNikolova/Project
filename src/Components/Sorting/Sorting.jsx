@@ -1,6 +1,7 @@
 import React from 'react'
+import Search from '../Search/Search'
 
-const Sorting = ({onChange, onCategoryChange}) => {
+const Sorting = ({onChange, onCategoryChange, onSearchChange, onSearchClick}) => {
     return (
         <div className='Sorting'>
         <label htmlFor="sortingValue">Sort by: </label>
@@ -16,6 +17,7 @@ const Sorting = ({onChange, onCategoryChange}) => {
             <option value="reviews">Reviews</option>
             <option value="other">Other</option>
         </select>
+        <Search onSearchClick={onSearchClick} onSearchChange={onSearchChange}/>
     </div>
     )
 }
