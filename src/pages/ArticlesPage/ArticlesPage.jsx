@@ -4,6 +4,8 @@ import { Helmet } from 'react-helmet'
 import './ArticlesPage.css'
 import { Link } from 'react-router-dom'
 import Sorting from '../../Components/Sorting/Sorting'
+import Spinner from '../../Components/Spinner/Spinner'
+import Search from '../../Components/Search/Search'
 
 export class ArticlesPage extends React.Component {
     constructor(props) {
@@ -12,7 +14,10 @@ export class ArticlesPage extends React.Component {
         this.state = {
             articles: [],
             criteria: '',
-            categoryCriteria:''
+            categoryCriteria: '',
+            loading: true,
+            searched: '',
+            clicked: false
         }
     }
 
@@ -21,7 +26,7 @@ export class ArticlesPage extends React.Component {
             .then(res => {
                 return res.json()
             }).then(articles => {
-                this.setState({ articles })
+                this.setState({ articles, loading: false })
             })
     }
 
@@ -31,12 +36,15 @@ export class ArticlesPage extends React.Component {
 
 
     renderOrigamis() {
-        let { articles, criteria, categoryCriteria } = this.state
-        if (criteria){
+        let { articles, criteria, categoryCriteria, searched, clicked } = this.state
+        if (criteria) {
             articles = [...articles].sort((a, b) => b[criteria] - a[criteria]);
         }
-        if (categoryCriteria && categoryCriteria !== 'all'){
-            articles = [...articles].filter((a) => a.category===categoryCriteria);
+        if (categoryCriteria && categoryCriteria !== 'all') {
+            articles = [...articles].filter((a) => a.category === categoryCriteria);
+        }
+        if (searched && clicked) {
+            articles = [...articles].filter((a) => a.title.includes(searched) );
         }
 
 
@@ -46,7 +54,7 @@ export class ArticlesPage extends React.Component {
                     <div className='product-details'>
                         <h1>{article.title}</h1>
                         <br />
-                        <small className="articleAuthor">Category: {article.category} Likes: {article.likedBy.length }</small>
+                        <small className="articleAuthor">Category: {article.category} Likes: {article.likedBy.length}</small>
                         <p key={article._id} className="content">
                             {index + 1}: {article.content.slice(0, 300) + '...'}
                         </p>
@@ -71,18 +79,20 @@ export class ArticlesPage extends React.Component {
     }
 
     render() {
+        const { loading, clicked } = this.state
         return <Main>
             <Helmet><title>Articles</title></Helmet>
-            <div className="Articles">
-                <h1 >Articles</h1>
-               <Sorting
-               onChange={(e)=>this.handleChange(e, 'criteria')}
-               onCategoryChange={(e)=>this.handleChange(e, 'categoryCriteria')}
-               />
-                {
-                    this.renderOrigamis()
-                }
+            { loading ? <Spinner /> : <div className="Articles">
+                <h1 >Articles </h1>
+                <Sorting
+                    onChange={(e) => this.handleChange(e, 'criteria')}
+                    onCategoryChange={(e) => this.handleChange(e, 'categoryCriteria')}
+                    onSearchChange={(e) => this.handleChange(e, 'searched')}
+                    onSearchClick={(e)=> {this.setState({clicked: !clicked})}}
+                />
+                { this.renderOrigamis() }
             </div>
+            }
         </Main>
     }
 }

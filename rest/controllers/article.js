@@ -20,13 +20,6 @@ module.exports = {
                 })
         },
         all: (req, res, next) => {
-            // Article
-            //     .find({})
-            //     .select('title description articleAuthor')
-            //     .lean()
-            //     .then((articles) => {
-            //         res.render('all-articles.hbs', { articles })
-            //     })
             Article
                 .find({})
                 .lean()
@@ -88,13 +81,13 @@ module.exports = {
                     User.update(
                         { _id: user.userId },
                         { $push: { createdArticles: data._id } }
-                    ).then(response=>{
+                    ).then(response => {
                         console.log(response);
-                    }).catch(e=>{
+                    }).catch(e => {
                         console.log(e);
                     })
                 })
-       
+
                 .catch((err) => {
                     if (err.code === 11000 || err.name === "ValidationError") {
                         const message = Object.entries(err.errors).map(tuple => {
@@ -113,29 +106,31 @@ module.exports = {
                 })
         },
         search: (req, res, next) => {
-            const { search } = req.body
+            const { searched } = req.body
             Article
                 .find({})
-                .select('title')
                 .lean()
                 .then((articles) => {
                     let searchedArticles = articles.filter(a =>
-                        a.title.toLowerCase().includes(search.toLowerCase())
+                        a.title.toLowerCase().includes(searched.toLowerCase())
                     )
-
-                    res.render('search-results.hbs', { articles: searchedArticles, search })
+                    console.log(searchedArticles);
+                    res.send({ articles: searchedArticles, searched })
+                }).catch(e => {
+                    res.send({ message: 'Something went wrong' })
+                    console.log(e);
                 })
         },
         like: (req, res, next) => {
             const { currentArticleId, currentUserId } = req.body;
-            User.findById(currentUserId).then((user)=>{
-                if (user.createdArticles.includes(currentArticleId)){
+            User.findById(currentUserId).then((user) => {
+                if (user.createdArticles.includes(currentArticleId)) {
                     return res.send({ message: "You can't like your own article" })
                 }
-                else if (user.likedArticles.includes(currentArticleId)){
+                else if (user.likedArticles.includes(currentArticleId)) {
                     return res.send({ message: "You've already liked this article" })
-                } 
-                else{
+                }
+                else {
                     Promise.all([
                         User.updateOne({ _id: currentUserId }, { $push: { likedArticles: currentArticleId } }),
                         Article.updateOne({ _id: currentArticleId }, { $push: { likedBy: currentUserId } })
@@ -149,9 +144,9 @@ module.exports = {
                         res.send({ message: 'Vliza v ke4a' })
                     })
                 }
-               
+
             })
-    
+
 
         },
     }

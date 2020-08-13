@@ -23,8 +23,10 @@
 	margin: 1em auto;
 	width: 80%;
 	height: 40%;
+	vertical-align: middle;
+	position: relative;
 	
-} */
+} 
 
 
 body{
@@ -101,14 +103,18 @@ body{
 
 /* product image  */
 .Article img {
-	transition: all 0.3s ease-out;
-	display: inline-block;
-	position: relative;
-	overflow: hidden;
-	height: 100%;
-	float: right;
-    width: 40%;
-	display: inline-block;
+
+	max-height: 100%;
+    max-width: 40%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 59%;
+    right: 0;
+    margin: auto;
+	
 }
 
 
@@ -116,13 +122,13 @@ body{
 	background: rgba(199, 85, 85, 0.1);
 	text-align: center;
 	margin: 1em auto;
-	width: 60%;
+	width: 80%;
     height: 10%;
     padding-top: 2%;
 	
 } 
 #Sort {
-    width: 30%;
+    width: 15%;
     border:none;
     border-bottom: 1px solid #ffffff;
     background-color: transparent;

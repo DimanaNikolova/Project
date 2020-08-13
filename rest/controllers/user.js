@@ -30,16 +30,15 @@ module.exports = {
         },
         profile: (req, res, next) => {
             const id = req.params.id
-            
 
-            Article.find({likedBy: id}).then(likedBy=>{
-              
-                Article.find({articleAuthor: id}).then(createdBy=>{
-                    console.log(createdBy);
-                    res.send({likedBy, createdBy})
+
+            Article.find({ likedBy: id }).then(likedBy => {
+
+                Article.find({ articleAuthor: id }).then(createdBy => {
+                    res.send({ likedBy, createdBy })
                 })
             })
-            
+
 
         },
         logout: (req, res, next) => {
@@ -68,7 +67,7 @@ module.exports = {
                         res.header('Authorization', token).send(user);
                     }).catch((err) => {
 
-                        res.send( {
+                        res.send({
                             message: "Username or password is invalid!"
                         });
                     })
@@ -82,54 +81,40 @@ module.exports = {
         },
         verifyLogin: (req, res, next) => {
             const token = req.body.token || '';
-  
+
             Promise.all([
                 jwt.verifyToken(token),
                 TokenBlacklist.findOne({ token })
             ])
                 .then(([data, blacklistToken]) => {
                     if (blacklistToken) { return Promise.reject(new Error('blacklisted token')) }
-  
-                   User.findById(data.id)
+
+                    User.findById(data.id)
                         .then((user) => {
                             return res.send({
-                              status: true,
-                              user
+                                status: true,
+                                user
                             })
                         });
                 })
                 .catch(err => {
-                  //  if (!redirectAuthenticated) { next(); return; }
-                  console.log(err);
-  
+                    console.log(err);
+
                     if (['token expired', 'blacklisted token', 'jwt must be provided'].includes(err.message)) {
                         res.status(401).send('UNAUTHORIZED!');
                         return;
                     }
-  
+
                     res.send({
-                      status: false
+                        status: false
                     })
                 })
-          },
-        // register:(req, res, next)=>{
-
-        //         const { username, password } = req.body;
-        //         User.create({ username, password })
-        //             .then((createdUser) => res.send(createdUser))
-        //             .catch(next)
-
-        // }
+        },
         register: (req, res, next) => {
             const { username, password, rePassword } = req.body;
-            // if (password !== repeatPassword) {
-            //     console.log('passwords do not match');
-            //     res.render('register.hbs', {
-            //         message: "Passwords do not match!",
-            //         oldInput: { username, password, repeatPassword }
-            //     });
-            //     return;
-            // }
+            if (password !== repeatPassword) {
+                return res.send({ message: 'Passowrds do not match' })
+            }
 
             User.create({ username, password })
                 .then((registeredUser) => {
@@ -140,7 +125,7 @@ module.exports = {
                         const message = Object.entries(err.errors).map(tuple => {
                             return tuple[1].message
                         })
-                        res.send( {
+                        res.send({
                             message: "Username or password is invalid!"
                         });
                     }
@@ -148,6 +133,11 @@ module.exports = {
                 })
 
 
-        }
+        }, profilePic: (req, res, next) => {
+            User.findByIdandUpdate({id},{profilePic: ""})
+            .then(data=>{
+                res.send(data)
+            })
+        },
     }
 }

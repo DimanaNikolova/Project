@@ -21,7 +21,10 @@ const userSchema = new mongoose.Schema({
     likedArticles: [{
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Article'
-    }]
+    }],
+    profilePic: {
+        type: mongoose.SchemaTypes.String,
+    }
 
 });
 

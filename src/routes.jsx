@@ -16,15 +16,13 @@ import ProfilePage from './pages/ProfilePage/ProfilePage'
 class Routes extends Component {
     static contextType = UserContext
     render() {
-        const user = this.context.user
-        console.log(this.context);
         return <BrowserRouter>
             <Switch>
                 <Route path="/guest">
-                    {!user ? (<GuestPage />) : (<Redirect to="/all" />)}
+                    {!this.context.user ? (<GuestPage />) : (<Redirect to="/all" />)}
                 </Route>
                 <Route exact path="/">
-                    {user ? (<ArticlesPage />) : (<Redirect to="/guest" />)}
+                    {this.context.user ? (<ArticlesPage />) : (<Redirect to="/guest" />)}
                 </Route>
                 <Route path='/login' component={LoginPage} />
                 <Route path='/register' component={RegisterPage} />
@@ -35,7 +33,7 @@ class Routes extends Component {
                 <Route path='/all' component={ArticlesPage} />
                 <Route path='/article/:id' component={ArticleDetailsPage} />
                 <Route path="/profile/:id">
-                    {user ? (<ProfilePage />) : (<Redirect to="/login" />)}
+                    {this.context.user ? (<ProfilePage />) : (<Redirect to="/login" />)}
                 </Route>
 
                 <Route component={ErrorPage} />

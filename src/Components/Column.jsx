@@ -7,8 +7,8 @@ const Column = ({ type }) => {
         <div className="column">
             {type.map((article, index) => {
                 return (
-                    <Link to={`/article/${article._id}`} className="ProfileLink">
-                        <div className='ProfileLinkDiv' key={index}>{article.title}</div>
+                    <Link to={`/article/${article._id}`} key={article.title} className="ProfileLink">
+                        <div className='ProfileLinkDiv'>{article.title}</div>
                     </Link>
                 )
             })}
