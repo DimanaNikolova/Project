@@ -42,7 +42,7 @@ export default class ArticleDetailsPage extends Component {
                     {<LikeBtn />}
                     <h1>{currentArticle.title} </h1>
                     <img src={currentArticle.image} alt='article' />
-                    <p><b>Category: </b>{currentArticle.category} <b>Author: </b>{author.username} <b>Likes: {likes}</b></p>
+                    <p className="articleInfo"><b>Category: </b>{currentArticle.category} <b>Author: </b>{author.username} <b>Likes: {likes}</b></p>
                     <p className='DetailsContent'>{currentArticle.content}</p>
                 </div>
             </Main>

@@ -7,7 +7,7 @@ const Sorting = ({onChange, onCategoryChange, onSearchChange, onSearchClick}) =>
         <label htmlFor="sortingValue">Sort by: </label>
         <select onChange={onChange} name="sorting" id="Sort">
             <option value="creationDate">Newest</option>
-            <option value="likes">Likes</option>
+            <option value="likedBy">Likes</option>
         </select>
         <label htmlFor="sortingValue"> Category: </label>
         <select onChange={onCategoryChange} name="sorting" id="Sort">

@@ -13,9 +13,7 @@ export default class ErrorPage extends Component {
                     <h1>404 :(</h1>
                     <h4>The page you're trying to load is not available</h4>
                     <button><Link className='go-back' to="/" >Go to Home page</Link></button>
-                    
                 </div>
-                
             </Main>
         )
     }

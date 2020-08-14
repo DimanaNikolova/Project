@@ -1,6 +1,13 @@
 const { User } = require('../models')
 const { Article } = require('../models')
 const { TokenBlacklist } = require('../models')
+const cloudinary = require('cloudinary')
+
+cloudinary.config({
+    cloud_name: 'dgimjbkbh',
+    api_key: '814129772125818',
+    api_secret: '0VmKZnjopGFSOtSnMN-JFLF_tmM'
+})
 
 const jwt = require('../utils/jwt')
 const config = require('../config/config')
@@ -112,7 +119,7 @@ module.exports = {
         },
         register: (req, res, next) => {
             const { username, password, rePassword } = req.body;
-            if (password !== repeatPassword) {
+            if (password !== rePassword) {
                 return res.send({ message: 'Passowrds do not match' })
             }
 
@@ -134,10 +141,20 @@ module.exports = {
 
 
         }, profilePic: (req, res, next) => {
-            User.findByIdandUpdate({id},{profilePic: ""})
-            .then(data=>{
-                res.send(data)
+            const { file, userId } = req.body
+            file.mv('./uploads/' +file.name, function(err,result){
+                if (err){
+                    res.send({message: 'something went wrong'})
+                } res.send({
+                    success:true,
+                    message: "Profile picture updated"
+                })
+                
             })
+            // User.findByIdandUpdate({id},{profilePic: ""})
+            // .then(data=>{
+            //     res.send(data)
+            // })
         },
     }
 }

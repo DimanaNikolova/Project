@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald:300,400,700');
 
-body{
-    background-image: url(https://is2.4chan.org/wg/1592021252847.jpg);
-    background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
-}
+
 h3{
     font-size: 30px;
     padding-bottom: 20px;
@@ -36,7 +30,7 @@ input {
     display:16px
 }
 
-button{
+.Container button{
     border:none;
     height:40px;
     outline:none;
@@ -47,7 +41,7 @@ button{
     border-radius: 20px;
 }
 
-button:hover{
+.Container button:hover{
     background-color: thistle;
     color: white;
 }

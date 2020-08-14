@@ -2,7 +2,7 @@ import React from 'react'
 import './LoginPage.css'
 import Main from '../../Components/Main/Main'
 import Input from '../../Components/Input'
-import {Helmet} from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import UserContext from '../../utils/UserContext'
 import FacebookLogin from '../../Components/FacebookLogin/FacebookLogin'
 import ErrorMessage from '../../Components/ErrorMessage/Error'
@@ -13,7 +13,7 @@ class LoginPage extends React.Component {
         this.state = {
             username: "",
             password: "",
-            message:''
+            message: ''
         }
     }
     static contextType = UserContext
@@ -23,10 +23,11 @@ class LoginPage extends React.Component {
         newState[type] = e.target.value
         this.setState(newState)
     }
+
     onSubmit = async (event) => {
         event.preventDefault()
         const { username, password } = this.state
-
+        console.log(this.context);
         try {
             const promise = await fetch(`http://localhost:9999/user/login`, {
                 method: "POST",
@@ -38,56 +39,51 @@ class LoginPage extends React.Component {
                     'Content-Type': 'application/json'
                 }
             })
-           const authToken = promise.headers.get('Authorization')
+            const authToken = promise.headers.get('Authorization')
             document.cookie = `x-auth-token=${authToken}`
             const response = await promise.json()
 
-        if (response.username && authToken) {
-                const user = {
-                    username: response.username,
-                    userId: response._id
-                }
-                this.context.user =user
-                this.context.loggedIn = true
-                this.props.history.push('/all')
+            if (response.username && authToken) {
+                this.context.user = { username: response.username, userId: response._id }
+                window.location.href='/'
             }
-           else if (response.message){
-            this.setState({ message: response.message }) 
-        }
+            else if (response.message) {
+                this.setState({ message: response.message })
+            }
 
         } catch (e) {
             console.log(e);
         }
 
     }
-    
-    render(){
-    const { username, password,message } = this.state
-  
+
+    render() {
+        const { username, password, message } = this.state
+
         return (
             <Main>
-            <Helmet>
-                <title>Login</title>
-            </Helmet>
-               <div className="Container">
-                   {message ? <ErrorMessage message={message}/> : null}
-                   <h3>Login</h3>
-                <form className="Form-area" onSubmit={this.onSubmit}>
-                    <Input value={username}
+                <Helmet>
+                    <title>Login</title>
+                </Helmet>
+                <div className="Container">
+                    {message ? <ErrorMessage message={message} /> : null}
+                    <h3>Login</h3>
+                    <form className="Form-area" onSubmit={this.onSubmit}>
+                        <Input value={username}
                             onChange={(e) => this.handleChange(e, 'username')}
                             label="Username"
-                            id="username"/>
-                    <Input  value={password}
+                            id="username" />
+                        <Input value={password}
                             onChange={(e) => this.handleChange(e, 'password')}
                             label="Password"
                             type='password'
-                            id="password"/>
-                            <button type="submit">Login</button>
-                </form>
-                <br/>
-                
-                            <FacebookLogin/>
-               </div>
+                            id="password" />
+                        <button type="submit">Login</button>
+                    </form>
+                    <br />
+
+                    <FacebookLogin />
+                </div>
             </Main>
         )
     }

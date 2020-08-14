@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './LikeBtn.css'
 import UserContext from '../../utils/UserContext'
-import ErrorMessage from '../../Components/ErrorMessage/Error'
 
 export default class LikeBtn extends Component {
     constructor(props) {
@@ -11,10 +10,11 @@ export default class LikeBtn extends Component {
             message: ''
         }
     }
+
     static contextType = UserContext
+
     onSubmit = async (event) => {
         event.preventDefault()
-
         let currentArticleId = window.location.href.split('/')[4]
 
         try {
@@ -47,8 +47,8 @@ export default class LikeBtn extends Component {
         const { alreadyLiked, message } = this.state
         return (
             <div>
-                <button onClick={e => this.onSubmit(e)} className={!alreadyLiked ? 'likeBtn' : null}>❤</button>
-                <div>{message ? alert(message) : null}</div>
+                <button onClick={e => this.onSubmit(e)} className={ !alreadyLiked ? 'likeBtn' : null }>❤</button>
+                <div>{ message ? alert(message) : null }</div>
             </div>
         )
     }

@@ -4,6 +4,7 @@ import Input from '../../Components/Input'
 import './CreateArticlePage.css'
 import UserContext from '../../utils/UserContext'
 import ErrorMessage from '../../Components/ErrorMessage/Error'
+import {Helmet} from 'react-helmet'
 
 export default class CreateArticlePage extends Component {
     constructor(props) {
@@ -50,7 +51,7 @@ export default class CreateArticlePage extends Component {
                 return this.setState({ message: response.message })
             }
 
-            this.props.history.push('/partners')
+            this.props.history.push('/')
 
         } catch (e) {
             console.log(e);
@@ -61,6 +62,7 @@ export default class CreateArticlePage extends Component {
         const { title, content, image, message } = this.state
         return (
             <Main>
+                <Helmet><title>Add an article</title></Helmet>
                 <div className="Add-article">
                     <h3>Add an article</h3>
 

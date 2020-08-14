@@ -1,7 +1,6 @@
 const config = require('../config/config')
 const { Article } = require('../models')
 const { User } = require('../models')
-//const { use } = require('../routers/article')
 
 module.exports = {
     get: {
@@ -13,15 +12,13 @@ module.exports = {
                 .sort('-creationDate')
                 .lean()
                 .then(articles => {
-                    // articles.forEach(a => {
-                    //     a.description = a.description.split(' ').slice(0, 50).join(' ')
-                    // });
                     res.send(articles)
                 })
         },
         all: (req, res, next) => {
             Article
-                .find({})
+                .find()
+                .sort({creationDate: -1})
                 .lean()
                 .then((articles) => {
 
@@ -91,7 +88,7 @@ module.exports = {
                 .catch((err) => {
                     if (err.code === 11000 || err.name === "ValidationError") {
                         const message = Object.entries(err.errors).map(tuple => {
-                            return res.send({ message: tuple[1].message })
+                          res.send({ message: tuple[1].message })
                         })
                     }
 

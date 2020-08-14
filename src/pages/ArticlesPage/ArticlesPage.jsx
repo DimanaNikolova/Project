@@ -5,7 +5,7 @@ import './ArticlesPage.css'
 import { Link } from 'react-router-dom'
 import Sorting from '../../Components/Sorting/Sorting'
 import Spinner from '../../Components/Spinner/Spinner'
-import Search from '../../Components/Search/Search'
+import Pagination from '../../Components/Pagination/Pagination'
 
 export class ArticlesPage extends React.Component {
     constructor(props) {
@@ -17,11 +17,13 @@ export class ArticlesPage extends React.Component {
             categoryCriteria: '',
             loading: true,
             searched: '',
-            clicked: false
+            clicked: false,
+            currentPage: 1,
+            postsPerPage: 5
         }
     }
 
-    getOrigamis() {
+    getArticles() {
         fetch(`http://localhost:9999/article/all`)
             .then(res => {
                 return res.json()
@@ -31,66 +33,76 @@ export class ArticlesPage extends React.Component {
     }
 
     componentDidMount() {
-        this.getOrigamis()
+        this.getArticles()
     }
 
-
-    renderOrigamis() {
-        let { articles, criteria, categoryCriteria, searched, clicked } = this.state
+    renderArticles() {
+        let { articles, criteria, categoryCriteria, searched, clicked, currentPage, postsPerPage } = this.state
         if (criteria) {
-            articles = [...articles].sort((a, b) => b[criteria] - a[criteria]);
+            articles = [...articles].sort((a, b) => b[criteria].length - a[criteria].length);
         }
         if (categoryCriteria && categoryCriteria !== 'all') {
             articles = [...articles].filter((a) => a.category === categoryCriteria);
         }
         if (searched && clicked) {
-            articles = [...articles].filter((a) => a.title.includes(searched) );
+            articles = [...articles].filter((a) => a.title.includes(searched));
+        }
+        if (articles.length > 0) {
+            const indexOfLastPost = currentPage * postsPerPage;
+            const indexOfFirstPost = indexOfLastPost - postsPerPage;
+            const currentPosts = articles.slice(indexOfFirstPost, indexOfLastPost);
+
+            return currentPosts.map((article, index) => {
+                return (
+                    <div className="Article" key={index}>
+                        <div className='product-details'>
+                            <h1><b>{article.title}</b></h1>
+                            <small><b>Category: </b> {article.category} <b>Likes: </b> {article.likedBy.length}</small>
+                            <p key={article._id} className="content">
+                                {article.content.slice(0, 300) + '...'}
+                            </p>
+                            <Link to={`/article/${article._id}`}>
+                                <button className='btn'>Read more</button>
+                            </Link>
+                        </div>
+                        <div>
+                            <span>
+                                <img src={article.image} alt="articleImage" />
+                            </span>
+                        </div>
+                    </div>
+                )
+            })
+        } else {
+            return <h3>No articles yet</h3>
         }
 
-
-        return articles.map((article, index) => {
-            return (
-                <div className="Article" key={index}>
-                    <div className='product-details'>
-                        <h1>{article.title}</h1>
-                        <br />
-                        <small className="articleAuthor">Category: {article.category} Likes: {article.likedBy.length}</small>
-                        <p key={article._id} className="content">
-                            {index + 1}: {article.content.slice(0, 300) + '...'}
-                        </p>
-                        <Link to={`/article/${article._id}`}>
-                            <button className='btn'>Read more</button>
-                        </Link>
-                    </div>
-                    <div>
-                        <span>
-                            <img src={article.image} alt="articleImage" />
-                        </span>
-                    </div>
-                </div>
-            )
-        })
     }
     handleChange = (e, type) => {
         const newState = {}
         newState[type] = e.target.value
         this.setState(newState)
-
     }
 
     render() {
-        const { loading, clicked } = this.state
+        const { loading, clicked, postsPerPage, articles } = this.state
+
         return <Main>
-            <Helmet><title>Articles</title></Helmet>
-            { loading ? <Spinner /> : <div className="Articles">
-                <h1 >Articles </h1>
+            <Helmet><title>ART-icles</title></Helmet>
+            {loading ? <Spinner /> : <div className="Articles" >
+                <h1 >ART-icles</h1>
                 <Sorting
                     onChange={(e) => this.handleChange(e, 'criteria')}
                     onCategoryChange={(e) => this.handleChange(e, 'categoryCriteria')}
                     onSearchChange={(e) => this.handleChange(e, 'searched')}
-                    onSearchClick={(e)=> {this.setState({clicked: !clicked})}}
+                    onSearchClick={(e) => { this.setState({ clicked: !clicked }) }}
                 />
-                { this.renderOrigamis() }
+                {this.renderArticles()}
+                <Pagination
+                    postsPerPage={postsPerPage}
+                    totalPosts={articles.length}
+                    paginate={ pageNumber => this.setState({currentPage: pageNumber})}
+                />
             </div>
             }
         </Main>

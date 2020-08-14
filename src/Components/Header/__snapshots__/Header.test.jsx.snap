@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component render unauthenticated routes 1`] = `
+<nav
+  className="menu"
+>
+  <ul
+    className="menu__list"
+  >
+    <li
+      className="menu__group"
+    >
+      <a
+        className="menu__link"
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+    </li>
+    <li
+      className="menu__group"
+    >
+      <a
+        className="menu__link"
+        href="/register"
+        onClick={[Function]}
+      >
+        Register
+      </a>
+    </li>
+    <li
+      className="menu__group"
+    >
+      <a
+        className="menu__link"
+        href="/login"
+        onClick={[Function]}
+      >
+        Login
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`Header Component should render authenticated routes 1`] = `
+<nav
+  className="menu"
+>
+  <ul
+    className="menu__list"
+  >
+    <li
+      className="menu__group"
+    >
+      <a
+        className="menu__link"
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+    </li>
+    <li
+      className="menu__group"
+    >
+      <a
+        className="menu__link"
+        href="/create-article"
+        onClick={[Function]}
+      >
+        Create
+      </a>
+    </li>
+    <li
+      className="menu__group"
+    >
+      <a
+        className="menu__link"
+        href="/profile/undefined"
+        onClick={[Function]}
+      >
+        Profile
+      </a>
+    </li>
+    <li
+      className="menu__group"
+    >
+      <a
+        className="menu__link"
+        href="/"
+        onClick={[Function]}
+      >
+        Logout
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
