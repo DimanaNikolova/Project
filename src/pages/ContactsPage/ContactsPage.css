@@ -4,12 +4,6 @@ textarea{
 }
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald:300,400,700');
 
-body{
-    background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
-}
 h3{
     font-size: 30px;
     padding-bottom: 30px;
@@ -58,8 +52,7 @@ input {
     color: #ffffff;
     display:16px
 }
-
-button{
+.MessageContainer button{
     border:none;
     height:40px;
     outline:none;

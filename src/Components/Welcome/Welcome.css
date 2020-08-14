@@ -4,12 +4,6 @@ html {
   font-size:100%;
 }
 
-body {
-  font-family: 'Open Sans', sans-serif;
-  color: #fff;
-  line-height: 1.6;
-}
-
 .img-responsive {
   max-width: 100%;
   height: auto;
@@ -42,7 +36,7 @@ h3 {
   /* background: url(https://images.unsplash.com/photo-1456305951335-bb8134aeab8a); */
   background: url(https://is2.4chan.org/wg/1592021252847.jpg);
   background-position: center center;
-  background-repeat: no-repeat;
+  background-repeat: re#;
   background-size: cover;
 }
 

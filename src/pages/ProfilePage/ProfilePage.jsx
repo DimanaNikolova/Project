@@ -3,6 +3,8 @@ import Main from '../../Components/Main/Main'
 import './ProfilePage.css'
 import UserContext from '../../utils/UserContext'
 import Column from '../../Components/Column'
+import { Helmet } from 'react-helmet'
+import profilePic from '../../images/ProfilePicture.png'
 
 export default class ProfilePage extends Component {
     constructor(props) {
@@ -64,13 +66,14 @@ export default class ProfilePage extends Component {
           const { liked, created } = this.state
           return (
               <Main>
+                  <Helmet><title>Profile</title></Helmet>
                   <div className='ProfileContainer'>
-                      <img className="ProfilePic" alt="profile" src="https://storage.pixteller.com/designs/designs-images/2016-11-19/02/thumbs/img_page_1_58305b35ebf5e.png" />
+                      <img className="ProfilePic" alt="profile" src={profilePic} />
   
                       <h2>{this.context.user.username}</h2>
   
                       <input name="file" type="file"
-   class="file-upload" data-cloudinary-field="image_id"
+   className="file-upload" data-cloudinary-field="image_id"
    data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"/>
    
                       <div className="row">

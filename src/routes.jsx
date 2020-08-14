@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import UserContext from './utils/UserContext'
 import GuestPage from './pages/GuestPage/GuestPage'
 import LoginPage from './pages/LoginPage/LoginPage'
 import RegisterPage from './pages/RegisterPage/RegisterPage'
-import AboutPage from './pages/AboutPage/AboutPage'
 import ContactsPage from './pages/ContactsPage/ContactsPage'
 import PartnersPage from './pages/Partners/PartnersPage'
 import ErrorPage from './pages/404/404'
@@ -16,28 +15,21 @@ import ProfilePage from './pages/ProfilePage/ProfilePage'
 class Routes extends Component {
     static contextType = UserContext
     render() {
+        const user = this.context.user
+        console.log(user);
         return <BrowserRouter>
             <Switch>
-                <Route path="/guest">
-                    {!this.context.user ? (<GuestPage />) : (<Redirect to="/all" />)}
-                </Route>
-                <Route exact path="/">
-                    {this.context.user ? (<ArticlesPage />) : (<Redirect to="/guest" />)}
-                </Route>
-                <Route path='/login' component={LoginPage} />
-                <Route path='/register' component={RegisterPage} />
-                <Route path='/about' component={AboutPage} />
+                <Route exact path="/" component={user ? ArticlesPage : GuestPage}/>
+                <Route path="/guest" component={user ? ArticlesPage : GuestPage}/>
+                <Route path="/login" component={!user ? LoginPage : ArticlesPage}/>
+                <Route path="/register" component={user ? ArticlesPage : RegisterPage}/>
+                <Route path="/all" component={user ? ArticlesPage : LoginPage}/>
+                <Route path="/article/:id" component={user ? ArticleDetailsPage : LoginPage}/>
+                <Route path="/profile/:id" component={user ? ProfilePage : LoginPage}/>
+                <Route path="/create-article" component={user ? CreateArticlePage : LoginPage}/>
                 <Route path='/contacts' component={ContactsPage} />
                 <Route path='/partners' component={PartnersPage} />
-                <Route path='/create-article' component={CreateArticlePage} />
-                <Route path='/all' component={ArticlesPage} />
-                <Route path='/article/:id' component={ArticleDetailsPage} />
-                <Route path="/profile/:id">
-                    {this.context.user ? (<ProfilePage />) : (<Redirect to="/login" />)}
-                </Route>
-
                 <Route component={ErrorPage} />
-
             </Switch>
         </BrowserRouter>
     }

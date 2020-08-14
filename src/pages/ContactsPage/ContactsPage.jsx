@@ -23,6 +23,7 @@ export default class ContactsPage extends Component {
         newState[type] = e.target.value
         this.setState(newState)
     }
+    
     handleSubmit(event) {
         event.preventDefault()
         const {name, message, email} = this.state
@@ -35,7 +36,6 @@ export default class ContactsPage extends Component {
         });
     }
  
-
     render() {
         const { name, message, email, success } = this.state
         return (

@@ -1,14 +1,12 @@
 .likeBtn {
-    position: absolute;
     outline:none;
     color: #ffffff;
     width: 5%;
     font-size: 20px;
-    background-color: tomato;
+    background-color: red;
     cursor: pointer;
     border-radius: 20px;
-    left: 83%;
-    top: 6%;
+    float: right;
    
 }
 

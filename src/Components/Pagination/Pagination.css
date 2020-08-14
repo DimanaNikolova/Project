@@ -1,0 +1,14 @@
+.pagination {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    left: 10%;
+    width: 76%;
+}
+.pagination button {
+    position: relative;
+    background: rgba(255, 255, 255, 0.5);
+    margin: 1% 0%;
+}
+.pagination button:hover{
+    cursor: pointer;
+}

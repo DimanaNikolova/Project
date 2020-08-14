@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald:300,400,700');
 
-body{
-    /* background-color: #ffebd1; */
-    /* background-image: url(https://is2.4chan.org/wg/1592021252847.jpg); */
-    background-position: center;
-  background-repeat: repeat-y;
-  background-size: cover;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
-}
 .Add-article{
     position: relative;
 	margin-bottom: 5%;
@@ -68,7 +60,7 @@ input {
     display:16px
 }
 
-button{
+.Article-Form-area button{
     border:none;
     height:40px;
     outline:none;

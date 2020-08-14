@@ -1,9 +1,11 @@
 import React from 'react'
 import './Welcome.css'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 const Welcome = () => {
-    return <div className="container">
+  return <div className="container">
+    <Helmet><title>ART-icles</title></Helmet>
     <div className="item">
       <h3>Uppercase Heading</h3>
       <h1>Main Title Here</h1>

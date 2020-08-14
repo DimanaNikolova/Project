@@ -24,7 +24,7 @@ class RegisterPage extends React.Component {
 
     handleSubmit = async (event) => {
         event.preventDefault()
-        const { username, password } = this.state
+        const { username, password,rePassword } = this.state
 
         try {
 
@@ -32,7 +32,8 @@ class RegisterPage extends React.Component {
                 method: "POST",
                 body: JSON.stringify({
                     username,
-                    password
+                    password, 
+                    rePassword
                 }),
                 headers: {
                     'Content-Type': 'application/json'

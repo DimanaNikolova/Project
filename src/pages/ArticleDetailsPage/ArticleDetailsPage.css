@@ -5,23 +5,23 @@ body {
   }
 
 .CurrentArticle{
-    position: absolute;
-    display: flex;
-    flex-direction:  column;
-    left: 50%;
-    top:50%;
-    transform: translate(-50%,-19%);
-    width: 80%;
+    position: relative;
+	margin-bottom: 5%;
+	margin-top: 10%;
+	left: 10%;
+	width: 80%;
+	height: auto;
     box-sizing: border-box;
     background: rgba(0,0,0,0.5);
     padding:40px;
-    padding-top:20px;
-    margin-bottom: 5%;
+	padding-top:20px
     
 }
 .CurrentArticle p{
     position: relative;
-    text-align: center;
+    text-align: left;
+    text-indent: 8%;
+    font-size: 80%
 }
 .CurrentArticle h1{
     text-align: center;
@@ -32,10 +32,15 @@ body {
 }
 .CurrentArticle img{
     position: relative;
-    left: 10%;
-    max-width: 80%;
-    height:auto;
+    max-width: 60%;
 }
 .DetailsContent{
     font-size: 30px;
+}
+.articleInfo {
+    color: #4d4131;
+    margin-bottom: 5%;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 50%;
+    
 }
