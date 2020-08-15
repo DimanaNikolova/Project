@@ -38,5 +38,5 @@ Authenticated users can create and read articles and they also have a personaliz
 
 ## App description
 
-The project is an article based website designed for almost art related topics specifically. Freely write and find quality content, add articles to your favourite-list and filter out only topics you're interested in.
+The project is an article based website designed for art related topics specifically. Freely write and find quality content, add articles to your favourite-list and filter out only topics you're interested in.
 
