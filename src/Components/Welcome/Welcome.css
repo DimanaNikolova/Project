@@ -33,16 +33,17 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background: url(https://images.unsplash.com/photo-1456305951335-bb8134aeab8a); */
   background: url(https://is2.4chan.org/wg/1592021252847.jpg);
   background-position: center center;
-  background-repeat: re#;
+  background-repeat: repeat-y;
   background-size: cover;
 }
 
 .item {
-  /* Padding is used for smaller screens */
   padding: 0 30px 0 30px;
+  text-align: center;
+}
+.item p{
   text-align: center;
 }
 
