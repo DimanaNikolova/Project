@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import './Map.css'
- 
+import Marker from '../Marker/Marker'
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
  
 class SimpleMap extends Component {
@@ -15,17 +15,17 @@ class SimpleMap extends Component {
  
   render() {
     return (
-      // Important! Always set the container height explicitly
       <div className="Map">
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyDMjjDlT--kVYx0tKeUh0kMEMyM0KXBpHk' }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
-            text="My Marker"
+            <Marker
+            lat={this.props.center.lat}
+            lng={this.props.center.lng}
+            name="My Marker"
+            color="red"
           />
         </GoogleMapReact>
       </div>
