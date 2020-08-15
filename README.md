@@ -9,7 +9,7 @@
 
 1. Clone the repo
 ```sh
-git clone https://github.com/BoykoPetevBoev/React-JS-June-2020-Exam.git
+git clone https://github.com/DimanaNikolova/ARTicles.git
 ```
 2. Install the dependencies in both index folder and rest-api folder
 ```sh
