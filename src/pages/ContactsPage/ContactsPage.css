@@ -68,20 +68,3 @@ button:hover{
     color: white;
 }
 
-.MeetUs {
-    position: absolute;
-    top:31%;
-    left:30%;
-    transform: translate(-50%,-50%);
-    width: 50%;
-    height:50%;
-    box-sizing: border-box;
-    background: rgba(0,0,0,0.5);
-    /* background: #b87333; */
-    padding:40px;
-    padding-top:20px;
-}
-.contact-infos {
-    font-size: 18px;
-    text-align: left;
-}

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Main from '../../Components/Main/Main'
 import { Helmet } from 'react-helmet'
 import './ArticleDetailsPage.css'
-import LikeBtn from '../../Components/LikeBtn/LikeBtn'
+import CurrentArticle from '../../Components/CurrentArticle/CurrentArticle'
 
 export default class ArticleDetailsPage extends Component {
     constructor(props) {
@@ -22,7 +22,6 @@ export default class ArticleDetailsPage extends Component {
     getArticle = (id) => {
         fetch(`http://localhost:9999/article/details/${id}`)
             .then(res => {
-                console.log(res);
                 if (!res.ok) {
                     this.props.history.push('/error')
                 }
@@ -38,13 +37,14 @@ export default class ArticleDetailsPage extends Component {
         return (
             <Main>
                 <Helmet><title>Edin article</title></Helmet>
-                <div className='CurrentArticle'>
-                    {<LikeBtn />}
-                    <h1>{currentArticle.title} </h1>
-                    <img src={currentArticle.image} alt='article' />
-                    <p className="articleInfo"><b>Category: </b>{currentArticle.category} <b>Author: </b>{author.username} <b>Likes: {likes}</b></p>
-                    <p className='DetailsContent'>{currentArticle.content}</p>
-                </div>
+                <CurrentArticle
+                title={currentArticle.title}
+                img={currentArticle.image}
+                category={currentArticle.category}
+                author={author.username}
+                likes={likes}
+                content={currentArticle.content}
+                />
             </Main>
         )
     }

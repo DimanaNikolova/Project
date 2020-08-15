@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import './Map.css'
 import Marker from '../Marker/Marker'
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
- 
+
 class SimpleMap extends Component {
   static defaultProps = {
     center: {
@@ -12,7 +11,7 @@ class SimpleMap extends Component {
     },
     zoom: 11
   };
- 
+
   render() {
     return (
       <div className="Map">
@@ -21,7 +20,7 @@ class SimpleMap extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-            <Marker
+          <Marker
             lat={this.props.center.lat}
             lng={this.props.center.lng}
             name="My Marker"
@@ -32,5 +31,5 @@ class SimpleMap extends Component {
     );
   }
 }
- 
+
 export default SimpleMap

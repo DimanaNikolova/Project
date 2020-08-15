@@ -12,7 +12,6 @@ export default class ProfilePage extends Component {
         this.state = {
             liked: [],
             created: [],
-            image: {}
         }
     }
     static contextType = UserContext
@@ -27,10 +26,6 @@ export default class ProfilePage extends Component {
                 }
             })
             const response = await promise.json()
-
-            if (response.message) {
-                return this.setState({ message: response.message })
-            }
             this.setState({ created: response.createdBy, liked: response.likedBy })
 
         } catch (e) {
@@ -42,26 +37,7 @@ export default class ProfilePage extends Component {
     componentDidMount() {
         this.getData()
     }
-    onChange =(e) => {
-        this.setState({ image: e.target.files[0] });
-        console.log(e.target.files[0] )
-    }
-    onSubmit =(e) => {
-        // const formData = new FormData();
-        // formData.append('file', image);
-        // formData.append('upload_preset', preset);
-        // try {
-        //   const res = await axios.post(url, formData);
-        //   const imageUrl = res.data.secure_url;
-        //   const image = await axios.post('http://localhost:3000/upload', {
-        //     imageUrl
-        //   });
-        //   setLoading(false);
-        //   setImage(image.data);
-        // } catch (err) {
-        //   console.error(err);
-        // }
-      };
+  
       render() {
           const { liked, created } = this.state
           return (
@@ -69,18 +45,10 @@ export default class ProfilePage extends Component {
                   <Helmet><title>Profile</title></Helmet>
                   <div className='ProfileContainer'>
                       <img className="ProfilePic" alt="profile" src={profilePic} />
-  
                       <h2>{this.context.user.username}</h2>
-  
-                      <input name="file" type="file"
-   className="file-upload" data-cloudinary-field="image_id"
-   data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"/>
-   
                       <div className="row">
-  
                           <h4 className="head">Liked articles:</h4>
                           <h4 className="head">Created articles:</h4>
-  
                       </div>
                       <div className="row">
                           <Column type={liked} />

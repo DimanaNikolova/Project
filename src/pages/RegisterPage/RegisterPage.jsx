@@ -63,7 +63,6 @@ class RegisterPage extends React.Component {
                 </Helmet>
                 <div className="Container">
                 {message ? <ErrorMessage message={message}/> : null}
-
                     <h3>Register</h3>
                     <form className="Form-area" onSubmit={this.handleSubmit}>
                         <Input value={username}
@@ -79,7 +78,7 @@ class RegisterPage extends React.Component {
                             type='password'
                             onChange={(e) => this.handleChange(e, 'rePassword')}
                             label="Repeat Password"
-                            id="password" />
+                            id="rePassword" />
                         <button type="submit">Register</button>
                     </form>
                 </div>
