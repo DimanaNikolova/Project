@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './Pagination.css'
 
 const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   const pageNumbers = [];
+
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);
@@ -13,7 +14,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
       <ul className='pagination'>
         {pageNumbers.map(number => (
           <li key={number} className='page-item'>
-            <button className='pageButton' onClick={() => paginate(number)} className='page-link'>
+            <button className='pageButton' onClick={() => {paginate(number); window.scrollTo(0, 0)}} className='page-link'>
               {number}
             </button>
           </li>
