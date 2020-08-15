@@ -3,8 +3,8 @@ import Input from '../../Components/Input'
 import { Helmet } from 'react-helmet'
 import './ContactsPage.css'
 import Main from '../../Components/Main/Main'
-import SimpleMap from '../../Components/Map/Map'
 import Message from '../../Components/SuccessMessage/Success'
+import MeetUs from '../../Components/MeerUs/MeetUs'
 
 export default class ContactsPage extends Component {
     constructor(props) {
@@ -44,18 +44,7 @@ export default class ContactsPage extends Component {
                     <Helmet>
                         <title>Contact us</title>
                     </Helmet>
-                    <div className='MeetUs'>
-                        <h2>Contact us</h2>
-                        <p className='contact-infos'>
-                            <b>Mobile:</b> 000 000 0000
-                            <br />
-                            <b>Email:</b> tovaeemail@gmail.com
-                            <br />
-                            <b>Address: </b> ul. Neshto si tam, kv. Kvartal, 9000, Varna, Bulgaria
-                        </p>
-                        <h2>Find us at:</h2>
-                    </div>
-                    <SimpleMap />
+                    <MeetUs/>
                     <div className="MessageContainer">
                         <h3>Send us an email!</h3>
                         {success ? <Message message={success}/> : null}

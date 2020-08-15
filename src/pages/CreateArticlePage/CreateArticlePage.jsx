@@ -31,7 +31,6 @@ export default class CreateArticlePage extends Component {
         const user = this.context.user
 
         try {
-
             const promise = await fetch(`http://localhost:9999/article/create`, {
                 method: "POST",
                 body: JSON.stringify({
@@ -76,7 +75,7 @@ export default class CreateArticlePage extends Component {
                         <label >Category:</label>
 
                         <select name="categories" id="categories" onChange={(e) => this.handleChange(e, 'category')}>
-                            <option disabled value="volvo">Select a category</option>
+                            <option disabled value="Select">Select a category</option>
                             <option value="news">News</option>
                             <option value="tips">Tips</option>
                             <option value="reviews">Reviews</option>

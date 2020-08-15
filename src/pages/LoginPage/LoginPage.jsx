@@ -4,7 +4,6 @@ import Main from '../../Components/Main/Main'
 import Input from '../../Components/Input'
 import { Helmet } from 'react-helmet'
 import UserContext from '../../utils/UserContext'
-import FacebookLogin from '../../Components/FacebookLogin/FacebookLogin'
 import ErrorMessage from '../../Components/ErrorMessage/Error'
 
 class LoginPage extends React.Component {
@@ -27,7 +26,6 @@ class LoginPage extends React.Component {
     onSubmit = async (event) => {
         event.preventDefault()
         const { username, password } = this.state
-        console.log(this.context);
         try {
             const promise = await fetch(`http://localhost:9999/user/login`, {
                 method: "POST",
@@ -78,11 +76,10 @@ class LoginPage extends React.Component {
                             label="Password"
                             type='password'
                             id="password" />
+                            <br />
                         <button type="submit">Login</button>
                     </form>
                     <br />
-
-                    <FacebookLogin />
                 </div>
             </Main>
         )

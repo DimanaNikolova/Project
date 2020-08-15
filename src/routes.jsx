@@ -16,7 +16,6 @@ class Routes extends Component {
     static contextType = UserContext
     render() {
         const user = this.context.user
-        console.log(user);
         return <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={user ? ArticlesPage : GuestPage}/>
