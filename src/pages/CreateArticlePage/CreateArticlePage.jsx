@@ -4,7 +4,7 @@ import Input from '../../Components/Input'
 import './CreateArticlePage.css'
 import UserContext from '../../utils/UserContext'
 import ErrorMessage from '../../Components/ErrorMessage/Error'
-import {Helmet} from 'react-helmet'
+import { Helmet } from 'react-helmet'
 
 export default class CreateArticlePage extends Component {
     constructor(props) {
